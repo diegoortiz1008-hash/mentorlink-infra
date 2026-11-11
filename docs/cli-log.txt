@@ -1,0 +1,10 @@
+$ npx supabase --version
+npm warn exec The following package was not found and will be installed: supabase@3.1.0
+3.1.0
+
+$ npx supabase init --yes
+Finished supabase init.
+
+$ npx supabase migration new inicializar_esquema
+{"path":"supabase/migrations/20261111020304_inicializar_esquema.sql","message":"Migration created"}
+

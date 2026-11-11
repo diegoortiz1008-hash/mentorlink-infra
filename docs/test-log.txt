@@ -1,0 +1,22 @@
+# PostgreSQL 16.13 · base limpia
+$ psql -f tests/00_supabase_stubs.sql
+$ psql -f supabase/migrations/20261111020304_inicializar_esquema.sql
+Migración aplicada sin errores
+$ psql -f tests/01_rls_tests.sql
+OK 1  trigger handle_new_user crea perfiles (Google, email y fallback)
+OK 2  estudiante solicita su propia sesion
+OK 3  RLS impide crear sesiones a nombre de otro
+OK 4  una sesion nueva debe nacer en estado pendiente
+OK 5  no se puede enviar mensajes en nombre de otro
+OK 6  un usuario no puede cambiar su propio rol
+OK 7  edita su bio, pero no la de otros (0 filas afectadas)
+OK 8  los mensajes son inmutables (sin DELETE)
+OK 9  un tercero NO ve sesiones ni mensajes ajenos (si ve perfiles)
+OK 10 no puede escribir en sesiones donde no participa
+OK 11 no puede modificar sesiones ajenas
+OK 12 trigger valida que mentor_id tenga rol mentor
+OK 13 la mentora ve su sesion y sus mensajes
+OK 14 la mentora confirma la sesion y responde
+OK 15 usuarios anonimos no acceden a ninguna tabla
+OK 16 CHECK y UNIQUE: sin auto-sesiones, sin choque de horario, sin mensajes vacios
+=== TODAS LAS PRUEBAS PASARON ===
